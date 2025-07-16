@@ -10,6 +10,33 @@ body {
   color: #fff;
 }
 
+.movie-section{
+  margin-bottom: 100px;
+  h2{
+    font-weight: bold;
+    color: #ffdc16;
+    font-size: 27px;
+  }
+  p{}
+  .react-multi-carousel-list{
+    .react-multi-carousel-track {
+      .movie-card-wrap{
+        width: 300px; text-align: center;
+        height: 400px; background-color: rgb(61, 61, 61);
+        .movie-card{
+          width: 250px; margin: auto;
+          height: 300px; margin-top: 20px;
+        }
+        .movie_title{
+          color: #fff; display: block;
+          font-size: 18px; margin-top: 10px;
+        }
+      }
+    }
+  }
+}
+
+
 .navbar {
   a {
     &:hover {
@@ -96,9 +123,28 @@ body {
         width: 600px;
       }
 
-      .btn {
-        height: 50px;
-        width: 100px;
+      .movie-btn {
+        height: 40px;
+        width: 130px;
+        background-color: #ffdc16;
+        border: 1px solid rgb(255, 255, 255);
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .modal-body{
+      height: 500px;
+    }
+  }
+}
+.modal-open{
+  .modal-dialog{
+    .modal-content{
+      height: 400px !important;
+      .modal-body{
+        width: 465px !important;
+        height: 230px !important;
+position: relative;
       }
     }
   }
@@ -187,8 +233,9 @@ body {
 
 .movie-detail-back {
   border: 1px solid #000;
-  height: 500px;
+  height: 500px; width: 1500px; margin: auto;
   background-position: center;
+  border-radius: 30px;
   position: relative;
 
   &::after {
@@ -209,14 +256,17 @@ body {
 
   .align-items-center {
     .movie-detail-poster {
-      width: 300px;
-      margin-top: 20px;
+      width: 300px; 
+      margin-top: 25px;
     }
 
     h2 {
       font-weight: bold;
       color: #ffdc16;
       font-size: 60px;
+    }
+    p{
+      font-weight: 600;
     }
 
     i {
@@ -232,10 +282,18 @@ body {
       background-color: #ffdc16;
       border-radius: 50%;
       color: #000;
-      font-weight: bold;
       margin-left: 10px;
     }
   }
+}
+.mb-2{
+  strong{
+    margin-right: 10px;
+  }
+}
+.bg-primary{
+background-color: #fcac17 !important;
+margin-right: 5px;
 }
 
 .trailer-btn {
@@ -243,6 +301,12 @@ body {
   border: 2px solid #ffdc16;
   color: #ffdc16;
   font-weight: bold;
+  &:hover{
+    background-color: #ffdc16;
+    color: #fff;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+  }
 }
 
 
@@ -300,6 +364,24 @@ body {
     }
   }
 }
+
+.similar-carousel{
+  width: 1300px; margin: auto;
+  margin-top: 80px;
+  .react-multi-carousel-track {
+    .text-center{
+      width: 250px;
+      height: 400px;
+      img{
+        height: 350px;
+      }
+      .mt-2{
+        font-size: 18px;
+      }
+    }
+  }
+}
+
 
 /* footer */
 .text-center{
@@ -365,7 +447,7 @@ body {
   position: relative;
   height: 100vh;
   width: 1300px;
-  margin: auto;
+  margin: auto; margin-top: -60px;
 
   .login-wrap {
     margin-top: 170px;
@@ -540,20 +622,20 @@ body {
     }
   }
   .login-bg{
-    font-size: 700px;
+    font-size: 500px;
     font-weight: bold;
-    transform: rotate(330deg);
+    transform: rotate(335deg);
     position: absolute; 
-    top: -10%; right: -40%;
+    top: 0; right: -10%;
     color: #ffffff74;
-    z-index: -1;
+    z-index: -2;
   }
 }
 
 /* mypage */
 .mypage{
-  width: 1400px;
-  margin: auto; height: 100vh;
+  width: 1400px; 
+  margin: auto; height: auto;
   .mypage-title{
     font-size: 35px;
     font-weight: bold;

@@ -10,6 +10,7 @@ import { useMovieReviews } from '../../hook/useMovieReviews';
 import { useGenreList } from '../../hook/useGenreList';
 import { useMovieTrailer } from '../../hook/useMovieTrailer';
 import { useMovieCredits } from '../../hook/useMovieCredits';
+import { useMovieSimilar } from '../../hook/useMovieSimilar';
 /* react-bootstrap */
 import { Container, Row, Col, Badge, Button, Alert, Modal } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
@@ -48,6 +49,8 @@ const MovieDetailPage = () => {
   /* 리뷰 가져오기 */
   const { data: reviewsData } = useMovieReviews(id);
   console.log('리뷰', reviewsData);
+  /* 추천영화 가져오기 */
+  const { data: similarData, isLoading: simLoading } = useMovieSimilar(id);
   /* 예고편 가져오기 */
   const { data: trailerData } = useMovieTrailer(id)
   /* 모달 */
@@ -79,13 +82,13 @@ const MovieDetailPage = () => {
         <Container>
           <Row className='align-items-center'>
             {/* 이미지 왼쪽 포스터 영역 */}
-            <Col sm={4}>
+            <Col sm={3}>
               <img src={`https://media.themoviedb.org/t/p/w500${movie.poster_path}`} alt={movie.title}
                 className='img-fluid rounded shadow movie-detail-poster'
               />
             </Col>
             {/* 오른쪽 영화 정보 */}
-            <Col sm={8}>
+            <Col sm={9}>
               <h2>{movie.title}</h2>
               <p>({movie.release_date})</p>
               <p>"{movie.overview}"</p>
@@ -114,7 +117,7 @@ const MovieDetailPage = () => {
               </div>
               {/* 장르 */}
               <div className='mb-2'>
-                <strong>장르
+                <strong>
                   {movie.genres.map((genre) => (
                     <Badge variant="warning">{genre.name}</Badge>
                   ))}
@@ -218,8 +221,41 @@ const MovieDetailPage = () => {
 
 
       {/* 추천영화 */}
-    </div>
+      <Container className='title'>
+        <h2 className='title'>추천영화</h2>
+        <p>비슷한 영화를 확인해보세요.</p>
+      </Container>
+
+      {simLoading ? (
+        <p>추천 영화 불러오는 중...</p>
+      ) : (
+        <Carousel
+          responsive={responsive}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={4000}
+          keyBoardControl={true}
+          swipeable={true}
+          draggable={true}
+          showDots={false}
+          arrows={true}
+          className='similar-carousel'
+        >
+          {similarData?.data?.results?.slice(0, 10).map((movie) => (
+            <div key={movie.id} className="text-center px-2">
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title}
+                style={{ width: "100%", borderRadius: "10px" }}
+              />
+              <h6 className='mt-2'>{movie.title}</h6>
+            </div>
+          ))}
+        </Carousel>
+      )}
+</div>
   )
 }
 
-export default MovieDetailPage
+
+      export default MovieDetailPage

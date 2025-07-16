@@ -17,7 +17,7 @@ const MovieCard = ({movie}) => {
     <div>
       <Card className='movie-card-wrap'
       style={{ cursor: 'pointer' }}
-      onClick={()=>navigate(`/movie/${movie.id}`)}
+      onClick={()=>navigate(`/movies/${movie.id}`)}
       >
         <div className='movie-card'
         style={{backgroundImage:`url(${imageUrl})`, height:'500px'

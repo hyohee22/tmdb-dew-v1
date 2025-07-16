@@ -50,8 +50,8 @@ const Banner = () => {
           <span>장르 {movie.genre_ids?.join(', ')}</span>
           <p>관람연령 ({movie.adult ? '성인' : '전체관람가'})</p>
           <p>평점 ⭐ {Math.round(movie.vote_average)}</p>
-          <Button variant="primary" onClick={handleShow}>
-            미리보기
+          <Button className='movie-btn' onClick={handleShow}>
+          Trailer
           </Button>
         </div>
 
